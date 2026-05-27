@@ -444,7 +444,7 @@ def inject_affiliate_links(content, topic_info):
         # 跳过已经在链接里的文本
         pattern = re.compile(
             r'(?<!\()'          # 不在已有链接的 ( 后面
-            rf'(?<![\[\(\"])'    # 不在已有链接或引号后面
+            rf'(?<![\[\(\"/])'   # 不在已有链接、引号或 URL 路径后面
             rf'{re.escape(name)}'
             r'(?!\])'           # 不在链接文本 ] 前面
             r'(?!\s*\]\s*\()',  # 不在 [名称]( 结构中
