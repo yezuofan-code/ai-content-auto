@@ -3,13 +3,13 @@
 </p>
 
 <p align="center">
-  📅 持续更新 · 已发布 16 篇内容
+  📅 持续更新 · 已发布 17 篇内容
 </p>
 
 <p align="center">
   <a href="#AI 教程"><img src="https://img.shields.io/badge/AI 教程-3-2d3436?style=for-the-badge&labelColor=0f3460"/></a>
   <a href="#选购指南"><img src="https://img.shields.io/badge/选购指南-4-2d3436?style=for-the-badge&labelColor=0f3460"/></a>
-  <a href="#对比评测"><img src="https://img.shields.io/badge/对比评测-3-2d3436?style=for-the-badge&labelColor=0f3460"/></a>
+  <a href="#对比评测"><img src="https://img.shields.io/badge/对比评测-4-2d3436?style=for-the-badge&labelColor=0f3460"/></a>
   <a href="#实用指南"><img src="https://img.shields.io/badge/实用指南-3-2d3436?style=for-the-badge&labelColor=0f3460"/></a>
   <a href="#深度评测"><img src="https://img.shields.io/badge/深度评测-3-2d3436?style=for-the-badge&labelColor=0f3460"/></a>
 </p>
@@ -38,6 +38,8 @@
 ## 对比评测
 
 - [iOS端网络加速工具横评：Surge、Quantumult X、Stash三款付费工具实测](content/comparisons/2026-05-27_iOS端网络加速工具横评_Surge、Quantumult_X、Stash三款付费工具实测.md) — 2026-05-27  
+  <sub>横向对比 · 性价比 · 选购参考</sub>
+- [三大入门级IEPL服务商横向对比：自由猫、奈云、MESL实测数据大公开](content/comparisons/2026-05-27_三大入门级IEPL服务商横向对比_自由猫、奈云、MESL实测数据大公开.md) — 2026-05-27  
   <sub>横向对比 · 性价比 · 选购参考</sub>
 - [年付套餐值不值？帮你算一笔账](content/comparisons/2026-05-27_年付套餐值不值？帮你算一笔账.md) — 2026-05-27  
   <sub>横向对比 · 性价比 · 选购参考</sub>
