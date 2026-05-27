@@ -6,42 +6,120 @@
     "pricing": [
       {"plan": "月付", "price": "15元/月", "traffic": "100G", "devices": "3台"}
     ],
-    "features": ["支持ChatGPT/Claude", "解锁Netflix/Disney+", "100+节点"],
-    "pros": ["线路稳定", "性价比高"],
+    "features": ["支持ChatGPT/Claude", "解锁Netflix/Disney+", "100+节点", "MPTCP多路复用技术"],
+    "pros": ["线路稳定", "性价比高", "⭐主力推荐"],
     "cons": ["节点数量偏少"]
   },
-  "奈云": {
-    "lines": ["IEPL专线", "中转"],
-    "locations": ["日本", "新加坡", "香港", "美国"],
-    "optimized": ["日本（晚高峰优化）"],
+  "悠兔": {
+    "lines": ["IEPL专线", "公网隧道中转", "家宽"],
+    "locations": ["香港", "台湾", "日本", "新加坡", "美国"],
+    "optimized": ["香港（低延迟23ms）", "专线节点（稳定）"],
     "pricing": [
-      {"plan": "年付", "price": "168元/年", "traffic": "", "devices": ""}
+      {"plan": "月付", "price": "29元/月", "traffic": "150G", "devices": "不限"},
+      {"plan": "月付", "price": "39元/月", "traffic": "300G", "devices": "不限"},
+      {"plan": "月付", "price": "59元/月", "traffic": "500G", "devices": "不限"},
+      {"plan": "月付", "price": "100元/月", "traffic": "1000G", "devices": "不限"}
     ],
-    "features": ["支持ChatGPT", "适合入门用户"],
-    "pros": ["价格便宜", "入门友好"],
-    "cons": ["晚高峰可能拥堵"]
+    "features": ["52+节点", "支持解锁Netflix/Disney+/YouTube Premium", "支持ChatGPT", "提供定制客户端", "运营2022年至今"],
+    "pros": ["线路丰富", "IEPL专线稳定", "老牌专线机场", "适合新手"],
+    "cons": ["专线节点高峰扣流量多（动态倍率）", "价格中高端", "不支持免费试用"]
   },
   "万达云": {
-    "lines": ["IEPL专线", "中转", "专线"],
+    "lines": ["IEPL专线", "IPLC专线", "中转"],
     "locations": ["日本", "新加坡", "香港", "美国", "台湾"],
-    "optimized": ["新加坡（低延迟）", "日本（晚高峰优化）"],
+    "optimized": ["IPLC/IEPL全专线（1000-2000Mbps）", "晚高峰不限速", "所有节点倍率x1"],
     "pricing": [
-      {"plan": "月付", "price": "", "traffic": "", "devices": ""}
+      {"plan": "月付", "price": "13.9元/月", "traffic": "150G", "devices": "5台"},
+      {"plan": "月付", "price": "24元/月", "traffic": "300G", "devices": "10台"},
+      {"plan": "月付", "price": "40元/月", "traffic": "600G", "devices": "20台"},
+      {"plan": "月付", "price": "78元/月", "traffic": "1200G", "devices": "20台"}
     ],
-    "features": ["线路类型丰富", "多地区覆盖"],
-    "pros": ["可选线路多", "支持分流策略"],
+    "features": ["IPLC/IEPL全专线", "支持Netflix/Disney+/HBO解锁", "支持ChatGPT/TikTok", "晚高峰不限速", "真人客服在线"],
+    "pros": ["全专线节点", "性价比高", "晚高峰不限速", "倍率x1无坑"],
     "cons": [""]
   },
-  "悠兔": {
-    "lines": ["IEPL专线", "专线", "家宽", "中转"],
-    "locations": ["日本", "新加坡", "香港", "美国", "韩国"],
-    "optimized": ["家宽线路（日常使用）", "专线（低延迟）"],
+  "龙猫云": {
+    "lines": ["IPLC内网专线", "BGP入口"],
+    "locations": ["香港", "台湾", "日本", "新加坡", "美国"],
+    "optimized": ["香港（低延迟33ms）", "IPLC专线（稳定）"],
     "pricing": [
-      {"plan": "月付", "price": "", "traffic": "", "devices": ""}
+      {"plan": "月付", "price": "15元/月", "traffic": "100G", "devices": "不限"},
+      {"plan": "月付", "price": "30元/月", "traffic": "200G", "devices": "不限"},
+      {"plan": "月付", "price": "60元/月", "traffic": "400G", "devices": "不限"},
+      {"plan": "月付", "price": "120元/月", "traffic": "1000G", "devices": "不限"}
     ],
-    "features": ["线路类型丰富", "家宽线路适合日常"],
-    "pros": ["线路选择多"],
-    "cons": [""]
+    "features": ["72+节点", "Shadowsocks+Trojan协议", "支持Netflix/Disney+解锁", "支持ChatGPT", "在线客服"],
+    "pros": ["IPLC专线质量稳定", "流媒体解锁好", "客服响应快", "对新手友好"],
+    "cons": ["冷门地区节点覆盖一般", "不提供免费试用"]
+  },
+  "肥猫云": {
+    "lines": ["IEPL专线"],
+    "locations": ["香港", "台湾", "日本", "新加坡", "美国"],
+    "optimized": ["全IEPL专线", "三网BGP入口", "高峰期表现好"],
+    "pricing": [
+      {"plan": "月付", "price": "20元/月", "traffic": "120G", "devices": ""},
+      {"plan": "月付", "price": "40元/月", "traffic": "300G", "devices": ""},
+      {"plan": "月付", "price": "100元/月", "traffic": "750G", "devices": ""},
+      {"plan": "月付", "price": "180元/月", "traffic": "1500G", "devices": ""}
+    ],
+    "features": ["84+节点", "Trojan协议", "全IEPL专线", "支持Netflix/Disney+/ChatGPT/TikTok解锁"],
+    "pros": ["线路质量高", "带宽冗余充足", "高峰期表现好"],
+    "cons": ["月付起始价格较高", "不支持试用", "轻量用户需选年付"]
+  },
+  "SKYLUMO": {
+    "lines": ["公网中转", "高速专线"],
+    "locations": ["全球80+地区"],
+    "optimized": [""],
+    "pricing": [
+      {"plan": "月付", "price": "3.99元/月起", "traffic": "", "devices": "多台"},
+      {"plan": "流量包", "price": "9.90元起", "traffic": "永不过期", "devices": ""}
+    ],
+    "features": ["全球80+地区覆盖", "提供试用入口", "流量包永不过期", "新手友好"],
+    "pros": ["价格低", "有试用", "流量包永不过期适合备用"],
+    "cons": ["公网中转速度一般"]
+  },
+  "闪狐云": {
+    "lines": ["BGP中转", "IPLC专线出口"],
+    "locations": ["香港", "日本", "台湾", "新加坡", "美国", "东南亚", "欧洲"],
+    "optimized": ["BGP中转+IPLC专线出口", "晚高峰不限速"],
+    "pricing": [
+      {"plan": "月付", "price": "20元/月", "traffic": "120G", "devices": "不限"},
+      {"plan": "月付", "price": "40元/月", "traffic": "240G", "devices": "不限"},
+      {"plan": "月付", "price": "72元/月", "traffic": "500G", "devices": "不限"},
+      {"plan": "月付", "price": "125元/月", "traffic": "1000G", "devices": "不限"}
+    ],
+    "features": ["Trojan协议", "1000Mbps速率", "支持ChatGPT+Netflix解锁", "无设备数限制", "2025年新上线"],
+    "pros": ["线路质量好", "同价位性价比高", "晚高峰不限速", "客服响应快"],
+    "cons": ["新上线服务商", "需观察长期稳定性"]
+  },
+  "贝贝云": {
+    "lines": ["公网隧道中转"],
+    "locations": ["日本", "新加坡", "香港"],
+    "optimized": [""],
+    "pricing": [
+      {"plan": "月付", "price": "11.9元/月", "traffic": "100G", "devices": ""},
+      {"plan": "月付", "price": "22.9元/月", "traffic": "200G", "devices": ""},
+      {"plan": "月付", "price": "32.9元/月", "traffic": "300G", "devices": ""},
+      {"plan": "月付", "price": "49.9元/月", "traffic": "500G", "devices": ""},
+      {"plan": "月付", "price": "79.9元/月", "traffic": "1000G", "devices": ""}
+    ],
+    "features": ["Shadowsocks协议", "提供定制客户端", "支持Clash/Shadowrocket/Surge等一键导入"],
+    "pros": ["价格便宜", "起步价低"],
+    "cons": ["公网中转", "高峰期可能拥堵"]
+  },
+  "Cyberguard": {
+    "lines": ["IEPL专线", "IPLC专线", "公网隧道"],
+    "locations": ["香港", "台湾", "日本", "新加坡", "美国", "韩国"],
+    "optimized": ["IEPL专线节点", "香港低延迟26ms"],
+    "pricing": [
+      {"plan": "月付", "price": "18元/月", "traffic": "100G", "devices": ""},
+      {"plan": "月付", "price": "28元/月", "traffic": "300G", "devices": ""},
+      {"plan": "月付", "price": "50元/月", "traffic": "600G", "devices": ""},
+      {"plan": "月付", "price": "200元/月", "traffic": "2TB", "devices": ""}
+    ],
+    "features": ["30+节点", "Vless+Trojan协议", "支持Netflix/Disney+/YouTube Premium", "支持按量付费"],
+    "pros": ["线路丰富", "协议较新", "支持年付/按量"],
+    "cons": ["无免费试用", "部分客户端可能不兼容"]
   },
   "一枝红杏": {
     "lines": ["专线", "中转"],
@@ -50,7 +128,7 @@
     "pricing": [
       {"plan": "月付", "price": "", "traffic": "", "devices": ""}
     ],
-    "features": ["10年老牌", "老牌服务商"],
+    "features": ["10年老牌服务商"],
     "pros": ["运营时间长", "经验丰富"],
     "cons": [""]
   },
@@ -78,24 +156,13 @@
   },
   "光年梯 LightYear": {
     "lines": ["专线"],
-    "locations": ["日本", "新加坡", "香港", "美国"],
-    "optimized": ["专线（低延迟）"],
+    "locations": ["日本", "新加坡", "香港"],
+    "optimized": [""],
     "pricing": [
       {"plan": "月付", "price": "", "traffic": "", "devices": ""}
     ],
     "features": ["专线入门"],
     "pros": ["入门友好"],
-    "cons": [""]
-  },
-  "SKYLUMO": {
-    "lines": ["中转"],
-    "locations": ["日本", "新加坡", "香港", "美国", "韩国", "台湾", "欧洲"],
-    "optimized": [""],
-    "pricing": [
-      {"plan": "月付", "price": "6.99元/月起", "traffic": "", "devices": ""}
-    ],
-    "features": ["全球80+地区覆盖"],
-    "pros": ["节点多", "全球覆盖广"],
     "cons": [""]
   },
   "全球云": {
@@ -109,28 +176,6 @@
     "pros": ["价格实惠"],
     "cons": [""]
   },
-  "龙猫云": {
-    "lines": ["专线"],
-    "locations": ["日本", "新加坡", "香港"],
-    "optimized": ["专线（入门）"],
-    "pricing": [
-      {"plan": "月付", "price": "", "traffic": "", "devices": ""}
-    ],
-    "features": ["专线入门"],
-    "pros": ["入门友好"],
-    "cons": [""]
-  },
-  "肥猫云": {
-    "lines": ["专线"],
-    "locations": ["日本", "新加坡", "香港"],
-    "optimized": [""],
-    "pricing": [
-      {"plan": "月付", "price": "", "traffic": "", "devices": ""}
-    ],
-    "features": ["专线服务"],
-    "pros": [""],
-    "cons": [""]
-  },
   "酷酷云": {
     "lines": ["专线"],
     "locations": ["日本", "新加坡", "香港"],
@@ -139,28 +184,6 @@
       {"plan": "月付", "price": "", "traffic": "", "devices": ""}
     ],
     "features": ["专线服务"],
-    "pros": [""],
-    "cons": [""]
-  },
-  "闪狐云": {
-    "lines": ["中转", "专线"],
-    "locations": ["日本", "新加坡", "香港", "美国"],
-    "optimized": ["中转线路"],
-    "pricing": [
-      {"plan": "月付", "price": "", "traffic": "", "devices": ""}
-    ],
-    "features": ["中转+专线"],
-    "pros": [""],
-    "cons": [""]
-  },
-  "贝贝云": {
-    "lines": ["中转"],
-    "locations": ["日本", "新加坡", "香港"],
-    "optimized": [""],
-    "pricing": [
-      {"plan": "月付", "price": "", "traffic": "", "devices": ""}
-    ],
-    "features": ["中转服务"],
     "pros": [""],
     "cons": [""]
   },
@@ -183,17 +206,6 @@
       {"plan": "月付", "price": "", "traffic": "", "devices": ""}
     ],
     "features": ["专线服务"],
-    "pros": [""],
-    "cons": [""]
-  },
-  "Cyberguard": {
-    "lines": ["IEPL"],
-    "locations": ["日本", "新加坡", "香港"],
-    "optimized": [""],
-    "pricing": [
-      {"plan": "月付", "price": "", "traffic": "", "devices": ""}
-    ],
-    "features": ["IEPL线路"],
     "pros": [""],
     "cons": [""]
   },
@@ -228,6 +240,17 @@
     ],
     "features": [""],
     "pros": [""],
+    "cons": [""]
+  },
+  "奈云": {
+    "lines": ["IEPL专线", "中转"],
+    "locations": ["日本", "新加坡", "香港", "美国"],
+    "optimized": ["IEPL线路"],
+    "pricing": [
+      {"plan": "年付", "price": "168元/年", "traffic": "", "devices": ""}
+    ],
+    "features": ["IEPL入门", "价格便宜"],
+    "pros": ["价格便宜", "入门友好"],
     "cons": [""]
   }
 }

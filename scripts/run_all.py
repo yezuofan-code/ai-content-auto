@@ -39,6 +39,20 @@ from scripts.fetch_affiliates import get_affiliates, extract_urls_to_text, filte
 affiliates = get_affiliates(force_refresh=True)
 if affiliates:
     affiliates = filter_valid(affiliates)
+    print(f"       ✓ {len(affiliates)} links loaded")
+
+    # 自动搜索新推广商的信息
+    print("\n[1b/5] Auto-searching new affiliate info...")
+    try:
+        from scripts.affiliate_search import auto_fill_affiliates
+        api_key = os.environ.get("DEEPSEEK_API_KEY", "")
+        filled = auto_fill_affiliates(api_key)
+        if filled:
+            print(f"       ✓ {filled} new affiliates researched")
+        else:
+            print(f"       ✓ No new affiliates to research")
+    except Exception as e:
+        print(f"       ⚠ Auto-search skipped: {e}")
 if affiliates:
     print(f"       ✓ {len(affiliates)} links loaded")
     os.environ["AFFILIATE_TEXT"] = extract_urls_to_text(affiliates)

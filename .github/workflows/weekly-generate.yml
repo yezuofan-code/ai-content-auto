@@ -26,7 +26,7 @@ jobs:
       - name: 安装依赖
         run: |
           python -m pip install --upgrade pip
-          pip install requests
+          pip install requests duckduckgo_search
 
       - name: 生成内容
         env:
@@ -44,6 +44,6 @@ jobs:
           if git diff --staged --quiet; then
             echo "没有新内容需要提交"
           else
-            git commit -m "📝 每周自动内容更新 - $(date +'%Y-%m-%d')"
+            git commit -m "update"
             git push
           fi
