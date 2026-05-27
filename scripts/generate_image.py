@@ -90,34 +90,65 @@ def _default_metadata(topic_info):
 
 def generate_image_with_text(prompt, output_path, timeout=300):
     """
-    调用 AI 绘图 API 生成带文字的图片
+    调用 AI 绘图 API（异步模式）生成带文字的图片
+    流程：提交任务 → 轮询结果 → 下载图片
     最多等待 timeout 秒（默认 5 分钟），超时或失败则放弃出图
     返回 True 表示成功
     """
     if not IMAGE_API_KEY:
         return False
 
-    api_timeout = max(timeout - 20, 60)  # 留 20 秒给下载，最少 60 秒
+    headers = {
+        "Authorization": f"Bearer {IMAGE_API_KEY}",
+        "Content-Type": "application/json",
+    }
+    payload = {
+        "model": IMAGE_MODEL,
+        "prompt": prompt,
+        "n": 1,
+        "size": f"{IMAGE_WIDTH}x{IMAGE_HEIGHT}",
+    }
+    deadline = time.time() + timeout
+
     try:
-        deadline = time.time() + timeout
-        resp = requests.post(IMAGE_API_URL, headers={
-            "Authorization": f"Bearer {IMAGE_API_KEY}",
-            "Content-Type": "application/json",
-        }, json={
-            "model": IMAGE_MODEL,
-            "prompt": prompt,
-            "n": 1,
-            "size": f"{IMAGE_WIDTH}x{IMAGE_HEIGHT}",
-        }, timeout=api_timeout)
+        # 1) 提交异步任务
+        async_url = f"{IMAGE_API_URL}?async=true"
+        resp = requests.post(async_url, headers=headers, json=payload, timeout=30)
         resp.raise_for_status()
-        img_url = resp.json()["data"][0]["url"]
-        remaining = max(int(deadline - time.time()), 10)
-        with open(output_path, "wb") as f:
-            f.write(requests.get(img_url, timeout=remaining).content)
-        print(f"  [AI] Image saved: {output_path}")
-        return True
+        body = resp.json()
+        task_id = body.get("data")
+        if not task_id:
+            print(f"  [AI] No task_id in response: {body}")
+            return False
+        print(f"  [AI] Task submitted: {task_id}")
+
+        # 2) 轮询任务结果
+        poll_url = f"{IMAGE_API_URL.replace('/generations', '')}/tasks/{task_id}"
+        while time.time() < deadline:
+            time.sleep(5)
+            poll_resp = requests.get(poll_url, headers=headers, timeout=15)
+            poll_resp.raise_for_status()
+            result = poll_resp.json()
+            status = result.get("data", {}).get("status", "")
+            if status == "SUCCESS":
+                img_url = result["data"]["data"]["data"][0]["url"]
+                remaining = max(int(deadline - time.time()), 10)
+                with open(output_path, "wb") as f:
+                    f.write(requests.get(img_url, timeout=remaining).content)
+                print(f"  [AI] Image saved: {output_path}")
+                return True
+            elif status == "FAILURE":
+                reason = result.get("data", {}).get("fail_reason", "unknown")
+                print(f"  [AI] Task failed: {reason}")
+                return False
+            # else IN_PROGRESS → continue polling
+            print(f"  [AI] Polling... status={status}")
+
+        print(f"  [AI] Timeout after {timeout}s, task still processing")
+        return False
+
     except Exception as e:
-        print(f"  [AI] Image generation failed within {timeout}s: {e}")
+        print(f"  [AI] Image generation failed: {e}")
         return False
 
 
