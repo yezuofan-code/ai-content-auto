@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  📅 持续更新 · 已发布 17 篇内容
+  📅 持续更新 · 已发布 18 篇内容
 </p>
 
 <p align="center">
@@ -12,6 +12,7 @@
   <a href="#对比评测"><img src="https://img.shields.io/badge/对比评测-4-2d3436?style=for-the-badge&labelColor=0f3460"/></a>
   <a href="#实用指南"><img src="https://img.shields.io/badge/实用指南-3-2d3436?style=for-the-badge&labelColor=0f3460"/></a>
   <a href="#深度评测"><img src="https://img.shields.io/badge/深度评测-3-2d3436?style=for-the-badge&labelColor=0f3460"/></a>
+  <a href="#故障排查"><img src="https://img.shields.io/badge/故障排查-1-2d3436?style=for-the-badge&labelColor=0f3460"/></a>
 </p>
 
 <br>
@@ -63,6 +64,11 @@
   <sub>深度评测 · 真实体验 · 长期使用</sub>
 - [奈云 IEPL 专线体验：168元年付到底值不值](content/reviews/2026-05-26_奈云_IEPL_专线体验_168元年付到底值不值.md) — 2026-05-26  
   <sub>深度评测 · 真实体验 · 长期使用</sub>
+
+## 故障排查
+
+- [晚高峰卡顿怎么办？5个技巧提升速度](content/troubleshooting/2026-05-27_晚高峰卡顿怎么办？5个技巧提升速度.md) — 2026-05-27  
+  <sub>故障排查 · 常见问题 · 实用技巧</sub>
 
 ---
 
