@@ -1,7 +1,6 @@
 """
 更新 README 内容索引
 每次生成新内容后自动更新目录
-升级：按分类展示 + 标签导航 + SEO 关键词
 """
 
 import os
@@ -21,7 +20,7 @@ def scan_content():
             if f.endswith(".md"):
                 filepath = os.path.join(root, f)
                 rel_path = os.path.relpath(filepath, ".").replace("\\", "/")
-                # 排除 generation_history.json 和 affiliate_cache.json
+                # 排除 generation_history.json
                 if "generation_history" in rel_path or "affiliate_cache" in rel_path:
                     continue
                 # 读取 front matter
@@ -68,7 +67,6 @@ def type_display_name(t):
 
 def generate_readme(articles):
     """生成 README 内容索引（按分类展示）"""
-    today = datetime.date.today().isoformat()
     total = len(articles)
 
     # 按类型分组
@@ -86,39 +84,27 @@ def generate_readme(articles):
     # 计算各类型的数量
     type_counts = {t: len(items) for t, items in by_type.items()}
 
-    content = f"""# 网络加速服务选购与 AI 工具使用指南
-
-📅 持续更新 · 已发布 {total} 篇内容
-
-> 分享我真实使用过的网络加速服务评测和 AI 工具教程。
-> 所有内容均为个人真实体验，优缺点都会如实说明。
-
----
-
-## 📋 快速导航
-
-"""
+    content = '<p align="center">\n'
+    content += '  <img src="https://capsule-render.vercel.app/api?type=waving&height=180&color=0:1a1a2e,50:16213e,100:0f3460&text=Weekly%20Digest&fontAlign=50&fontAlignY=40&fontColor=ffffff"/>\n'
+    content += '</p>\n\n'
+    content += '<p align="center">\n'
+    content += f"  \U0001f4c5 持续更新 · 已发布 {total} 篇内容\n"
+    content += '</p>\n\n'
+    content += '<p align="center">\n'
 
     if by_type:
-        # 生成导航链接
-        nav_items = []
-        for t in sorted(by_type.keys()):
-            name = type_display_name(t)
-            anchor = f"分类-{name}"
-            count = type_counts.get(t, 0)
-            nav_items.append(f"[{name}（{count}篇）](#{anchor})")
-        content += " | ".join(nav_items) + "\n\n---\n\n"
-    else:
-        content += "> 内容整理中，请稍后查看...\n\n"
-        content += "---\n\n"
-
-    if by_type:
-        # 按分类展示
         for t in sorted(by_type.keys()):
             name = type_display_name(t)
             count = type_counts.get(t, 0)
-            content += f"## 📂 {name} <a id=\"分类-{name}\"></a>\n\n"
-            content += f"> 共 {count} 篇\n\n"
+            content += f'  <a href="#{name}"><img src="https://img.shields.io/badge/{name}-{count}-2d3436?style=for-the-badge&labelColor=0f3460"/></a>\n'
+
+    content += '</p>\n\n<br>\n\n---\n\n'
+
+    if by_type:
+        for t in sorted(by_type.keys()):
+            name = type_display_name(t)
+            count = type_counts.get(t, 0)
+            content += f"## {name}\n\n"
 
             for a in by_type[t]:
                 date_str = a["date"] if a["date"] else ""
@@ -129,7 +115,6 @@ def generate_readme(articles):
                     title_link += f" — {date_str}"
 
                 if tags_str:
-                    # 添加标签作为小字
                     tag_list = [t.strip() for t in tags_str.split(",") if t.strip()]
                     if tag_list:
                         tags_html = " · ".join(tag_list)
@@ -138,23 +123,15 @@ def generate_readme(articles):
                 content += title_link + "\n"
             content += "\n"
 
-    content += """---
-
-## 📌 说明
-
-- 所有内容均为个人真实使用体验分享
-- 推荐的服务商均列明优缺点，不构成购买建议
-- 建议先试用再决定是否付费
-
-## ⭐ 收藏
-
-如果内容对你有帮助，欢迎 **Star** 收藏，方便以后查找。
-"""
+    content += '---\n\n'
+    content += '<p align="center">\n'
+    content += '  <sub>内容持续更新中 · 欢迎 Star 收藏</sub>\n'
+    content += '</p>\n'
 
     with open("README.md", "w", encoding="utf-8") as f:
         f.write(content)
 
-    print(f"✅ README 已更新，共 {len(articles)} 篇文章，{len(by_type)} 个分类")
+    print(f"READ README updated: {len(articles)} articles, {len(by_type)} categories")
 
 
 def main():
