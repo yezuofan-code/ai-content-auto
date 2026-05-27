@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  📅 持续更新 · 已发布 18 篇内容
+  📅 持续更新 · 已发布 19 篇内容
 </p>
 
 <p align="center">
@@ -11,7 +11,7 @@
   <a href="#选购指南"><img src="https://img.shields.io/badge/选购指南-4-2d3436?style=for-the-badge&labelColor=0f3460"/></a>
   <a href="#对比评测"><img src="https://img.shields.io/badge/对比评测-4-2d3436?style=for-the-badge&labelColor=0f3460"/></a>
   <a href="#实用指南"><img src="https://img.shields.io/badge/实用指南-3-2d3436?style=for-the-badge&labelColor=0f3460"/></a>
-  <a href="#深度评测"><img src="https://img.shields.io/badge/深度评测-3-2d3436?style=for-the-badge&labelColor=0f3460"/></a>
+  <a href="#深度评测"><img src="https://img.shields.io/badge/深度评测-4-2d3436?style=for-the-badge&labelColor=0f3460"/></a>
   <a href="#故障排查"><img src="https://img.shields.io/badge/故障排查-1-2d3436?style=for-the-badge&labelColor=0f3460"/></a>
 </p>
 
@@ -38,13 +38,13 @@
 
 ## 对比评测
 
-- [iOS端网络加速工具横评：Surge、Quantumult X、Stash三款付费工具实测](content/comparisons/2026-05-27_iOS端网络加速工具横评_Surge、Quantumult_X、Stash三款付费工具实测.md) — 2026-05-27  
-  <sub>横向对比 · 性价比 · 选购参考</sub>
-- [三大入门级IEPL服务商横向对比：自由猫、奈云、MESL实测数据大公开](content/comparisons/2026-05-27_三大入门级IEPL服务商横向对比_自由猫、奈云、MESL实测数据大公开.md) — 2026-05-27  
+- [IEPL专线 vs 普通中转：到底差在哪](content/comparisons/2026-05-27_IEPL专线_vs_普通中转_到底差在哪.md) — 2026-05-27  
   <sub>横向对比 · 性价比 · 选购参考</sub>
 - [年付套餐值不值？帮你算一笔账](content/comparisons/2026-05-27_年付套餐值不值？帮你算一笔账.md) — 2026-05-27  
   <sub>横向对比 · 性价比 · 选购参考</sub>
-- [IEPL专线 vs 普通中转：到底差在哪](content/comparisons/2026-05-27_IEPL专线_vs_普通中转_到底差在哪.md) — 2026-05-27  
+- [三大入门级IEPL服务商横向对比：自由猫、奈云、MESL实测数据大公开](content/comparisons/2026-05-27_三大入门级IEPL服务商横向对比_自由猫、奈云、MESL实测数据大公开.md) — 2026-05-27  
+  <sub>横向对比 · 性价比 · 选购参考</sub>
+- [iOS端网络加速工具横评：Surge、Quantumult X、Stash三款付费工具实测](content/comparisons/2026-05-27_iOS端网络加速工具横评_Surge、Quantumult_X、Stash三款付费工具实测.md) — 2026-05-27  
   <sub>横向对比 · 性价比 · 选购参考</sub>
 
 ## 实用指南
@@ -58,6 +58,8 @@
 
 ## 深度评测
 
+- [月付5元能买到什么样的网络加速？新华云NewHua99低价套餐实测](content/reviews/2026-05-27_月付5元能买到什么样的网络加速？新华云NewHua99低价套餐实测.md) — 2026-05-27  
+  <sub>深度评测 · 真实体验 · 长期使用</sub>
 - [家宽线路真的比专线慢吗？悠兔家宽一个月深度体验报告](content/reviews/2026-05-27_家宽线路真的比专线慢吗？悠兔家宽一个月深度体验报告.md) — 2026-05-27  
   <sub>深度评测 · 真实体验 · 长期使用</sub>
 - [一枝红杏10年老牌机场评测：老品牌还值得信赖吗](content/reviews/2026-05-27_一枝红杏10年老牌机场评测_老品牌还值得信赖吗.md) — 2026-05-27  
