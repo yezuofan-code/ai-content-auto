@@ -436,6 +436,7 @@ def inject_affiliate_links(content, topic_info):
     # 按名称长度倒序排列（先匹配长的名字）
     sorted_affs = sorted(affiliates.items(), key=lambda x: len(x[0]), reverse=True)
 
+    # 第一步：匹配完整名称（含英文后缀，例如"自由猫 Freecat"）
     for name, info in sorted_affs:
         url = info.get("url", "")
         if not url:
@@ -453,6 +454,28 @@ def inject_affiliate_links(content, topic_info):
 
         replacement = f'[{name}](https://api.huanghaiwan.com/go/{name})'
         content = pattern.sub(replacement, content)
+
+    # 第二步：匹配中文短名称（例如"自由猫 Freecat" → 也匹配"自由猫"）
+    # 避免 DeepSeek 写文章时只用了中文名而没有英文后缀
+    for name, info in sorted_affs:
+        url = info.get("url", "")
+        if not url:
+            continue
+        parts = name.strip().split(None, 1)
+        if len(parts) > 1:
+            short_name = parts[0]
+            if short_name == name:
+                continue
+            # 短名称后跟英文字母说明是全称（"自由猫 Freecat"），跳过不重复匹配
+            # 这样就只匹配纯中文名出现的情况（"自由猫"）
+            short_pattern = re.compile(
+                rf'{re.escape(short_name)}'
+                rf'(?!\s*[A-Za-z])',  # 后面没有跟英文 → 不是全称
+                re.UNICODE
+            )
+            # URL 用完整名称确保跳转正确
+            replacement = f'[{short_name}](https://api.huanghaiwan.com/go/{name})'
+            content = short_pattern.sub(replacement, content)
 
     return content
 
