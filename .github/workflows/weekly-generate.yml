@@ -6,6 +6,12 @@ on:
     - cron: '0 0 * * *'
   # 也支持手动触发
   workflow_dispatch:
+  # 代码变更时触发（排除 content/images 避免循环触发）
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'content/**'
+      - 'images/**'
 
 jobs:
   generate-content:
