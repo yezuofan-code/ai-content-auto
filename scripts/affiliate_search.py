@@ -33,14 +33,14 @@ def load_affiliates():
 
 
 def find_new_affiliates():
-    """找出有推广链接但信息库中还没有详细资料的推广商"""
+    """找出信息库中完全不存在的推广商（已有记录的不再搜索）"""
     affs = load_affiliates()
     db = load_info_db()
     new_ones = {}
     for name, info in affs.items():
         if name == "Test" or not info.get("url", ""):
             continue
-        if name not in db or not db[name].get("lines") or not db[name].get("lines")[0]:
+        if name not in db:  # 只要在库里就不管了
             new_ones[name] = info
     return new_ones
 
