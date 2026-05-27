@@ -921,5 +921,61 @@
     "cons": [
       ""
     ]
+  },
+  "光年梯": {
+    "lines": [],
+    "locations": [],
+    "optimized": [],
+    "pricing": [],
+    "features": [],
+    "pros": [],
+    "cons": []
+  },
+  "新华云": {
+    "lines": [],
+    "locations": [
+      "亚洲",
+      "欧洲",
+      "北美",
+      "南美",
+      "非洲",
+      "大洋洲"
+    ],
+    "optimized": [],
+    "pricing": [],
+    "features": [],
+    "pros": [],
+    "cons": []
+  },
+  "自由猫": {
+    "lines": [
+      ""
+    ],
+    "locations": [
+      "日本",
+      "新加坡",
+      "香港",
+      "美国"
+    ],
+    "optimized": [
+      ""
+    ],
+    "pricing": [
+      {
+        "plan": "月付",
+        "price": "",
+        "traffic": "",
+        "devices": ""
+      }
+    ],
+    "features": [
+      ""
+    ],
+    "pros": [
+      ""
+    ],
+    "cons": [
+      ""
+    ]
   }
 }
