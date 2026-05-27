@@ -145,5 +145,15 @@
     "image_count": 1,
     "cycle_index": 8,
     "fingerprint": "5f044ee98590d118ba7a6e0175b88104"
+  },
+  {
+    "date": "2026-05-27",
+    "week_num": 0,
+    "topic": "Mac 上配置网络加速的几种方式对比",
+    "type": "guide",
+    "article_path": "content/guides/2026-05-27_Mac_上配置网络加速的几种方式对比.md",
+    "image_count": 1,
+    "cycle_index": 23,
+    "fingerprint": "c2af330080777648aab0f9f5f8a26f01"
   }
 ]
