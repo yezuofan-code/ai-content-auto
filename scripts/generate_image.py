@@ -116,7 +116,7 @@ def generate_image_with_text(prompt, output_path, timeout=300):
         resp = requests.post(async_url, headers=headers, json=payload, timeout=30)
         resp.raise_for_status()
         body = resp.json()
-        task_id = body.get("data")
+        task_id = body.get("task_id") or body.get("data")
         if not task_id:
             print(f"  [AI] No task_id in response: {body}")
             return False
@@ -129,20 +129,32 @@ def generate_image_with_text(prompt, output_path, timeout=300):
             poll_resp = requests.get(poll_url, headers=headers, timeout=15)
             poll_resp.raise_for_status()
             result = poll_resp.json()
-            status = result.get("data", {}).get("status", "")
-            if status == "SUCCESS":
-                img_url = result["data"]["data"]["data"][0]["url"]
+            # 处理不同响应格式：{status, data:{status, data:{...}}}
+            task_data = result.get("data", result)
+            task_status = task_data.get("status", "")
+            if task_status == "SUCCESS":
+                img_data = task_data.get("data", task_data)
+                img_list = img_data.get("data", []) if isinstance(img_data, dict) else img_data
+                if isinstance(img_list, list) and len(img_list) > 0:
+                    img_url = img_list[0].get("url", "")
+                elif isinstance(img_list, dict):
+                    img_url = img_list.get("url", "")
+                else:
+                    img_url = task_data.get("url", "")
+                if not img_url:
+                    print(f"  [AI] No image URL in SUCCESS response: {result}")
+                    return False
                 remaining = max(int(deadline - time.time()), 10)
                 with open(output_path, "wb") as f:
                     f.write(requests.get(img_url, timeout=remaining).content)
                 print(f"  [AI] Image saved: {output_path}")
                 return True
-            elif status == "FAILURE":
-                reason = result.get("data", {}).get("fail_reason", "unknown")
+            elif task_status == "FAILURE":
+                reason = task_data.get("fail_reason", "unknown")
                 print(f"  [AI] Task failed: {reason}")
                 return False
             # else IN_PROGRESS → continue polling
-            print(f"  [AI] Polling... status={status}")
+            print(f"  [AI] Polling... status={task_status}")
 
         print(f"  [AI] Timeout after {timeout}s, task still processing")
         return False
