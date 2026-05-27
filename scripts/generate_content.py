@@ -258,26 +258,30 @@ def build_article_prompt(topic_info, category_config=None):
 
     # 如果内容类型适合植入推广
     if content_type in ("review", "comparison", "buying_guide", "guide"):
-        prompt += """
-【推广信息（以下服务商供参考，只在文章自然需要时提及）】
+        # 加载推广信息库
+        aff_db = {}
+        try:
+            import json as _json
+            with open("content/affiliate_info.json", "r", encoding="utf-8") as _f:
+                aff_db = _json.load(_f)
+        except:
+            pass
 
-以下是一些市面上常见的网络加速服务商（仅供写作参考，不需要全部列出）：
+        from scripts.affiliate_db import format_info_for_prompt, build_affiliate_descriptions
+        info_text = format_info_for_prompt(affiliates, aff_db) if affiliates else ""
+        descs = build_affiliate_descriptions(affiliates, aff_db) if affiliates else {}
+
+        prompt += f"""
+【推广信息库（以下服务商的详细信息，供写作参考）】
+
 """
-        if affiliates:
-            sample_count = min(5, len(aff_list))
-            sampled = rng.sample(aff_list, sample_count)
-            for name, info in sampled:
-                url = info.get("url", "")
-                note = info.get("note", "")
-                commission = info.get("commission", "")
-                line = f"- {name}"
-                if url:
-                    line += f"：{url}"
-                if commission:
-                    line += f" [推广码：{commission}]"
-                if note:
-                    line += f" ({note})"
-                prompt += line + "\n"
+        if info_text:
+            prompt += info_text + "\n"
+
+        if descs:
+            prompt += "【一句话描述】\n"
+            for name, desc in descs.items():
+                prompt += f"- {name}：{desc}\n"
 
         prompt += """
 【推广植入原则】

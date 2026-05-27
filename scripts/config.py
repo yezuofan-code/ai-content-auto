@@ -382,6 +382,89 @@ WRITING_STRATEGY = {
 }
 
 # ============================================================
+# 话题分类：推广向 vs 干货向
+# ============================================================
+PROMOTIONAL_TYPES = {"buying_guide", "review", "comparison"}
+EDUCATIONAL_TYPES = {"ai_tutorial", "guide", "troubleshooting", "guide"}
+
+
+def is_promotional(topic):
+    """判断话题是否为推广向"""
+    return topic.get("type") in PROMOTIONAL_TYPES
+
+
+def count_remaining_promotional():
+    """统计内容日历中剩余的推广向话题数量"""
+    return sum(1 for t in CONTENT_CALENDAR if is_promotional(t))
+
+
+def count_remaining_educational():
+    """统计内容日历中剩余的干货向话题数量"""
+    return sum(1 for t in CONTENT_CALENDAR if not is_promotional(t))
+
+
+def auto_generate_promotional_topics(affiliates):
+    """
+    当推广向话题不足 10 个时，根据现有推广链接自动生成新话题
+    affiliates: 从 API 获取的推广数据 {名称: {url, note, ...}}
+    返回新增的话题列表
+    """
+    new_topics = []
+    # 排除 Test 等测试条目，只保留有效推广
+    valid_affs = {k: v for k, v in affiliates.items()
+                  if k not in ("Test",) and v.get("url", "")}
+
+    # 获取已存在的推广话题，避免重复
+    existing_names = set()
+    for t in CONTENT_CALENDAR:
+        if is_promotional(t):
+            topic = t.get("topic", "")
+            for aff_name in valid_affs:
+                if aff_name in topic:
+                    existing_names.add(aff_name)
+                    break
+
+    # 为还没有评测话题的推广商生成新话题
+    for name, info in valid_affs.items():
+        if name in existing_names:
+            continue
+        if len(new_topics) >= 15:
+            break
+
+        note = info.get("note", "")
+        if "不推荐" in note or "一般般" in note:
+            continue  # 不推荐的不生成话题
+
+        # 从 note 推断线路类型
+        line_type = "网络加速"
+        if "IEPL" in note:
+            line_type = "IEPL专线"
+        elif "专线" in note:
+            line_type = "专线"
+        elif "中转" in note:
+            line_type = "中转"
+
+        new_topics.append({
+            "type": "review",
+            "topic": f"{name} {line_type}使用体验：真实评测分享",
+            "style": "review",
+            "description": f"推广评测：{name}的真实使用体验",
+            "image_label": "review",
+        })
+        # 如果推广商信息充足，再加一个对比类话题
+        if len(new_topics) < 15:
+            new_topics.append({
+                "type": "comparison",
+                "topic": f"{name} vs 同类服务商对比：{line_type}哪家强",
+                "style": "comparison",
+                "description": f"对比评测：{name}与同类服务商的多维度对比",
+                "image_label": "compare",
+            })
+
+    return new_topics
+
+
+# ============================================================
 # 时间计算
 # ============================================================
 PROJECT_START_DATE = datetime.date(2026, 5, 25)
@@ -395,8 +478,32 @@ def get_current_week():
     return max(week_num, 0)
 
 
-def get_current_topic():
-    """获取本周应该写的内容"""
+def ensure_topic_balance(affiliates=None):
+    """
+    确保内容日历保持 40% 推广 / 60% 干货的比例
+    如果推广话题不足 10 个，自动补新话题
+    返回调整后的日历长度
+    """
+    promo_count = count_remaining_promotional()
+    if promo_count >= 10:
+        return len(CONTENT_CALENDAR)
+
+    if not affiliates:
+        return len(CONTENT_CALENDAR)
+
+    new_topics = auto_generate_promotional_topics(affiliates)
+    if new_topics:
+        CONTENT_CALENDAR.extend(new_topics)
+        total = len(CONTENT_CALENDAR)
+        print(f"[Config] Added {len(new_topics)} promotional topics ({total} total)")
+    return len(CONTENT_CALENDAR)
+
+
+def get_current_topic(affiliates=None):
+    """获取本周应该写的内容，必要时自动补话题"""
+    # 检查并补充推广话题
+    ensure_topic_balance(affiliates)
+
     week_num = get_current_week()
     index = week_num % len(CONTENT_CALENDAR)
     topic = CONTENT_CALENDAR[index]

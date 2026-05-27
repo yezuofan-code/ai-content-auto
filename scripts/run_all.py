@@ -34,9 +34,11 @@ print("=" * 55)
 # 步骤 1：从源仓库获取最新推广链接
 # ============================================================
 print("\n[1/5] Fetching affiliate links from source repo...")
-from scripts.fetch_affiliates import get_affiliates, extract_urls_to_text
+from scripts.fetch_affiliates import get_affiliates, extract_urls_to_text, filter_valid
 
 affiliates = get_affiliates(force_refresh=True)
+if affiliates:
+    affiliates = filter_valid(affiliates)
 if affiliates:
     print(f"       ✓ {len(affiliates)} links loaded")
     os.environ["AFFILIATE_TEXT"] = extract_urls_to_text(affiliates)
@@ -63,7 +65,7 @@ print(f"       Previous generations: {stats['total']}")
 if stats["last_date"]:
     print(f"       Last generation: {stats['last_date']}")
 
-topic_info = get_current_topic()
+topic_info = get_current_topic(affiliates)
 print(f"       Planned topic: {topic_info['topic']}")
 
 # 检查是否和已有内容重复

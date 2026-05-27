@@ -130,6 +130,13 @@ def get_affiliates(force_refresh=False):
     return {}
 
 
+def filter_valid(affiliates):
+    """过滤掉没有推广链接的条目"""
+    return {k: v for k, v in affiliates.items()
+            if v.get("url", "").strip()
+            and k not in ("Test",)}
+
+
 def extract_urls_to_text(affiliates):
     """把推广链接转成文本，供 prompt 使用"""
     lines = []

@@ -1,0 +1,13 @@
+{
+  "自由猫 Freecat": {
+    "lines": ["IEPL专线", "普通中转"],
+    "locations": ["日本", "新加坡", "美国", "香港", "台湾", "韩国"],
+    "optimized": ["日本（晚高峰优化）", "新加坡（低延迟）", "美国（流媒体解锁）"],
+    "pricing": [
+      {"plan": "月付", "price": "15元/月", "traffic": "100G", "devices": "3台"}
+    ],
+    "features": ["支持ChatGPT/Claude", "解锁Netflix/Disney+", "MPTCP多路复用"],
+    "pros": ["线路稳定", "性价比高"],
+    "cons": ["节点数量偏少"]
+  }
+}
