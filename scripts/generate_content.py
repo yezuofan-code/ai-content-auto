@@ -496,12 +496,15 @@ tags: {tags_str}
     # 注入推广链接
     content_with_links = inject_affiliate_links(content, topic_info)
 
-    # 在文章顶部加上头图
+    # 在文章顶部加上头图 + 元信息
     date_str = os.environ.get('GENERATE_DATE', '')
     image_header = f"""
+<div align="center">
+  <img src="../../images/{date_str}/01_cover.png" width="85%" />
+  <br><sub>{date_str} · {tags_str}</sub>
+</div>
 
-![文章头图](../../images/{date_str}/01_cover.png)
-
+<br>
 """
     full_content = front_matter + image_header + content_with_links
 
