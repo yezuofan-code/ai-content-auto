@@ -442,12 +442,14 @@ def inject_affiliate_links(content, topic_info):
             continue
 
         # 跳过已经在链接里的文本
+        # 纯英文名（如 MESL）后面不直接跟中文，避免"MESL实测"粘连
+        extra_lookahead = r'(?![一-鿿])' if name.isascii() and not any('一' <= c <= '鿿' for c in name) else ''
         pattern = re.compile(
             r'(?<!\()'          # 不在已有链接的 ( 后面
             rf'(?<![\[\(\"/])'   # 不在已有链接、引号或 URL 路径后面
             rf'{re.escape(name)}'
             r'(?!\])'           # 不在链接文本 ] 前面
-            r'(?!\s*\]\s*\()',  # 不在 [名称]( 结构中
+            r'(?!\s*\]\s*\()' + extra_lookahead,  # 不在 [名称]( 结构中
             re.UNICODE
         )
 
