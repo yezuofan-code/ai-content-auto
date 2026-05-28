@@ -217,3 +217,20 @@ if article_path:
 https://github.com/yezuofan-code/weekly-digest
 """)
     print("=" * 55)
+
+# ============================================================
+# 步骤 6：自动发推（X/Twitter）
+# ============================================================
+if article_path and os.environ.get("TWITTER_API_KEY"):
+    print("\n[6/6] Posting to X...")
+    try:
+        from scripts.twitter_poster import post_tweet, build_tweet_text
+        text = build_tweet_text(topic_info.get("topic", ""), article_path)
+        if post_tweet(text):
+            print("       ✓ Posted to X")
+        else:
+            print("       ✗ Failed to post to X")
+    except Exception as e:
+        print(f"       ✗ X post failed: {e}")
+else:
+    print("\n[6/6] X posting skipped (TWITTER_API_KEY not set)")

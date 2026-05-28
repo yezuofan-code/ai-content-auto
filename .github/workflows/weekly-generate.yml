@@ -32,12 +32,16 @@ jobs:
       - name: 安装依赖
         run: |
           python -m pip install --upgrade pip
-          pip install requests duckduckgo_search
+          pip install requests duckduckgo_search tweepy requests_oauthlib
 
       - name: 生成内容
         env:
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
           IMAGE_API_KEY: ${{ secrets.IMAGE_API_KEY }}
+          TWITTER_API_KEY: ${{ secrets.TWITTER_API_KEY }}
+          TWITTER_API_SECRET: ${{ secrets.TWITTER_API_SECRET }}
+          TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
+          TWITTER_ACCESS_SECRET: ${{ secrets.TWITTER_ACCESS_SECRET }}
           GENERATE_DATE: ${{ github.event.repository.updated_at }}
         run: python scripts/run_all.py
 
