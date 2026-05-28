@@ -215,5 +215,15 @@
     "image_count": 1,
     "cycle_index": 9,
     "fingerprint": "931aa6c73c757fd67fc4ab268d11bccf"
+  },
+  {
+    "date": "2026-05-28",
+    "week_num": 0,
+    "topic": "DeepSeek 2026 使用指南：国产AI的进步",
+    "type": "guide",
+    "article_path": "content/guides/2026-05-28_DeepSeek_2026_使用指南_国产AI的进步.md",
+    "image_count": 1,
+    "cycle_index": 32,
+    "fingerprint": "872e1c49b1e9177988b829d5ebfc52ba"
   }
 ]
