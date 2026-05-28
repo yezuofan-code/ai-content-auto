@@ -454,7 +454,8 @@ def inject_affiliate_links(content, topic_info):
         )
 
         replacement = f'[{name}](https://api.huanghaiwan.com/go/{name})'
-        content = pattern.sub(replacement, content)
+        # 每个名字只替换前 1 次，避免通篇都是链接，阅读体验不好
+        content = pattern.sub(replacement, content, count=1)
 
     return content
 
