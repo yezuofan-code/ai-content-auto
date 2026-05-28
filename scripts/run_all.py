@@ -184,3 +184,36 @@ if article_path:
 print(f"     Images: {len(image_files)}")
 print(f"     Total content pieces: {get_generation_count()}")
 print("=" * 55)
+
+# ============================================================
+# 步骤 6：生成推广文案（供手动发布用）
+# ============================================================
+if article_path:
+    print("\n" + "=" * 55)
+    print("  📋 分享文案（可直接复制发布）")
+    print("=" * 55)
+
+    topic = topic_info.get("topic", "")
+    content_type = topic_info.get("type", "")
+
+    type_hints = {
+        "review": "长期用下来的真实感受",
+        "comparison": "几家放一起对比了下",
+        "buying_guide": "总结了一些选购经验",
+        "ai_tutorial": "上手试了试，整理了个教程",
+        "guide": "把配置过程记录了一下",
+        "troubleshooting": "踩坑后整理的解决方案",
+    }
+    hint = type_hints.get(content_type, "整理了一些经验")
+
+    print(f"""
+分享一个刚更新的内容：
+
+{topic}
+{'-' * len(topic)}
+自己{hint}，该踩的坑基本都踩了一遍，干脆写成文章了。
+有需要的可以看看，希望对你有帮助。
+
+https://github.com/yezuofan-code/weekly-digest
+""")
+    print("=" * 55)
